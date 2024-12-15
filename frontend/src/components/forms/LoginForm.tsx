@@ -55,6 +55,7 @@ export function LoginForm() {
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.user.role);
+      localStorage.setItem("username", data.user.username);
       setError(null);
 
       if (role !== "admin") {

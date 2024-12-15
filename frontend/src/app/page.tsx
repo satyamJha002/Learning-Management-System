@@ -1,11 +1,68 @@
-export default function Home() {
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+
+const App = () => {
+  const [username, setUsername] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Check if the user is authenticated by looking for a valid JWT token in localStorage
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    const storedUsername = localStorage.getItem("username");
+
+    if (storedToken && storedUsername) {
+      setIsAuthenticated(true);
+      setUsername(storedUsername);
+    }
+  }, []);
+
+  // Handle logout by clearing localStorage and resetting the state
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    setIsAuthenticated(false);
+    setUsername("");
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800">
-      {/* Header Section */}
+      {/* Header Section with Navbar */}
       <header className="bg-blue-600 text-white p-4">
-        <h1 className="text-3xl font-bold text-center">
-          Learning Management System
-        </h1>
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-bold">Learning Management System</h1>
+
+          {/* Navbar with dynamic content based on authentication */}
+          <div className="space-x-6">
+            {isAuthenticated ? (
+              <>
+                <span>Welcome, {username}</span>
+                <button
+                  onClick={handleLogout}
+                  className="text-white bg-red-500 px-4 py-2 rounded hover:bg-red-600"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/register"
+                  className="text-white bg-green-500 px-4 py-2 rounded hover:bg-green-600"
+                >
+                  Register
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
       </header>
 
       {/* Main Content */}
@@ -85,4 +142,6 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+};
+
+export default App;

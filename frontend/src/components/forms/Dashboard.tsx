@@ -32,6 +32,7 @@ const Dashboard = () => {
       setError(
         "You do not have access to this page. Please log in as an admin."
       );
+
       return;
     }
     const getCourses = async () => {
@@ -75,6 +76,12 @@ const Dashboard = () => {
         >
           Log Out
         </button>
+
+        <Link href="/">
+          <button className="mt-4 bg-red-500 text-white py-2 px-4 rounded">
+            Home
+          </button>
+        </Link>
       </div>
     );
   }
@@ -129,12 +136,11 @@ const Dashboard = () => {
             Add New Course
           </button>
         </Link>
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 text-white px-4 py-2 rounded mb-4 inline-block"
-        >
-          Log Out
-        </button>
+        <Link href="/">
+          <button className="bg-red-500 text-white px-4 py-2 rounded mb-4 inline-block">
+            Go Back
+          </button>
+        </Link>
       </div>
 
       <table className="min-w-full bg-white border border-gray-300 rounded-lg mb-6">
