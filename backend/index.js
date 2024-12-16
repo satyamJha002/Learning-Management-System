@@ -17,7 +17,7 @@ app.get("/", (req, res) =>
   res.send("Congratulation 🎉🎉! Our Express server is Running on Vercel")
 );
 
-const allowedOrigins = ["https://learning-management-system-o6dm.vercel.app"];
+const allowedOrigins = ["http://localhost:3000"];
 
 app.use(
   cors({

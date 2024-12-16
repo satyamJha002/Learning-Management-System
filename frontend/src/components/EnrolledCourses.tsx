@@ -19,7 +19,7 @@ const MyEnrolledCourses = () => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "https://learning-management-system-lac.vercel.app/api/user/enrolled-courses",
+        "http://localhost:5000/api/user/enrolled-courses",
         {
           method: "GET",
           headers: {
