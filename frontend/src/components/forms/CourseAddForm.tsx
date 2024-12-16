@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const AddCourse = () => {
-  const [role, setRole] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
@@ -15,8 +14,6 @@ const AddCourse = () => {
         "You do not have access to this page. Please log in as an admin."
       );
       return;
-    } else {
-      setRole(storedRole);
     }
   }, [router]);
 
@@ -50,9 +47,14 @@ const AddCourse = () => {
       } else {
         alert(result.message);
       }
-    } catch (error) {
-      console.error(error);
-      alert("An error occurred while adding the course.");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+        alert(error.message || "Server error");
+      } else {
+        console.error("Unexpected error:", error);
+        alert("An unexpected error occurred");
+      }
     }
   };
 

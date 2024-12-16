@@ -34,9 +34,14 @@ const CourseCatalog = () => {
       } else {
         alert(data.message || "Error come to fetch all the courses");
       }
-    } catch (error: any) {
-      console.log(error.message);
-      alert(error.message || "Server error");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+        alert(error.message || "Server error");
+      } else {
+        console.error("Unexpected error:", error);
+        alert("An unexpected error occurred");
+      }
     }
   };
 

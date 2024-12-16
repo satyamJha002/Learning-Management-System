@@ -12,6 +12,11 @@ const PORT = process.env.PORT || 4000;
 connectToDB();
 
 const app = express();
+
+app.get("/", (req, res) =>
+  res.send("Congratulation 🎉🎉! Our Express server is Running on Vercel")
+);
+
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 

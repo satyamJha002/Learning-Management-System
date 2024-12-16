@@ -63,9 +63,14 @@ export function LoginForm() {
       } else {
         router.push("/");
       }
-    } catch (error: any) {
-      setError(error.message);
-      console.log(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+        setError(error.message);
+      } else {
+        console.error("Unexpected error:", error);
+        alert("An unexpected error occurred");
+      }
     }
   };
 
@@ -124,7 +129,7 @@ export function LoginForm() {
         </Card>
         <div>{error && <p className="text-red-500">{error}</p>}</div>
         <div className="mt-4 text-center text-sm">
-          Don't have an account?
+          Don&apos;t have an account?
           <Link className="underline ml-2" href="register">
             Sign Up
           </Link>

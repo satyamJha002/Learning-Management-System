@@ -81,18 +81,18 @@ const App = () => {
           <div className="bg-white shadow-md rounded-md p-6">
             <h3 className="text-xl font-medium mb-4">User Options</h3>
             <div className="space-y-4">
-              <a
+              <Link
                 href="/user/enrolled-courses"
                 className="block w-full bg-blue-500 text-white py-2 text-center rounded hover:bg-blue-600"
               >
                 My Enrolled Courses
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/user/course-catalog"
                 className="block w-full bg-green-500 text-white py-2 text-center rounded hover:bg-green-600"
               >
                 Browse Courses
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -100,12 +100,12 @@ const App = () => {
           <div className="bg-white shadow-md rounded-md p-6">
             <h3 className="text-xl font-medium mb-4">Admin Options</h3>
             <div className="space-y-4">
-              <a
+              <Link
                 href="/dashboard"
                 className="block w-full bg-purple-500 text-white py-2 text-center rounded hover:bg-purple-600"
               >
                 Admin Dashboard
-              </a>
+              </Link>
               <a
                 href="/course-forms"
                 className="block w-full bg-indigo-500 text-white py-2 text-center rounded hover:bg-indigo-600"
@@ -119,12 +119,12 @@ const App = () => {
           <div className="bg-white shadow-md rounded-md p-6">
             <h3 className="text-xl font-medium mb-4">Other Features</h3>
             <div className="space-y-4">
-              <a
+              <Link
                 href="/contact-support"
                 className="block w-full bg-red-500 text-white py-2 text-center rounded hover:bg-red-600"
               >
                 Contact Support
-              </a>
+              </Link>
               <a
                 href="/about"
                 className="block w-full bg-gray-500 text-white py-2 text-center rounded hover:bg-gray-600"

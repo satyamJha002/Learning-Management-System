@@ -14,7 +14,6 @@ interface Course {
 const CourseDetails = () => {
   const [course, setCourse] = useState<Course | null>(null);
   const params = useParams();
-  const [isEnrolled, setIsEnrolled] = useState([]);
 
   const id = params?.id;
   console.log(id);
@@ -42,8 +41,14 @@ const CourseDetails = () => {
       } else {
         alert("Failed to load course");
       }
-    } catch (error: any) {
-      console.log(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+        alert(error.message || "Server error");
+      } else {
+        console.error("Unexpected error:", error);
+        alert("An unexpected error occurred");
+      }
     }
   };
 
@@ -62,10 +67,6 @@ const CourseDetails = () => {
     return <p>Loading course details...</p>;
   }
 
-  const handleEnrolled = async () => {
-    console.log(isEnrolled);
-  };
-
   return (
     <div className="container mx-auto p-6">
       <Fragment>
@@ -73,10 +74,7 @@ const CourseDetails = () => {
         <p className="text-gray-600 mb-2">{course.description}</p>
         <p className="mb-2">Duration: {course.duration}</p>
         <p className="mb-4">Instructor: {course.instructor}</p>
-        <button
-          onClick={handleEnrolled}
-          className="bg-blue-500 text-white px-6 py-2 rounded"
-        >
+        <button className="bg-blue-500 text-white px-6 py-2 rounded">
           Enroll
         </button>
       </Fragment>

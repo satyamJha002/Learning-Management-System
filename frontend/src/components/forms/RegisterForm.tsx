@@ -59,9 +59,14 @@ export function RegisterForm() {
       setError(null);
 
       router.push("/login");
-    } catch (error: any) {
-      console.log(error.message);
-      setError(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+        setError(error.message);
+      } else {
+        console.error("Unexpected error:", error);
+        alert("An unexpected error occurred");
+      }
     }
   };
   return (

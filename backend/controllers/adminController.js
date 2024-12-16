@@ -3,7 +3,7 @@ import Course from "../models/courses.js";
 export const addCourse = async (req, res) => {
   try {
     const { title, description, duration, instructor } = req.body;
-
+    ``;
     if (!title || !description || !duration || !instructor) {
       return res.status(400).json({ message: "All details must be filled" });
     }

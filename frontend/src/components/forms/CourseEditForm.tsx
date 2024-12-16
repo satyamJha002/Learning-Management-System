@@ -14,7 +14,6 @@ const EditCourse = () => {
     duration: "",
     instructor: "",
   });
-  const [role, setRole] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -28,8 +27,6 @@ const EditCourse = () => {
       router.push("/login");
       return;
     }
-
-    setRole(storedRole);
 
     const fetchCourse = async () => {
       try {
