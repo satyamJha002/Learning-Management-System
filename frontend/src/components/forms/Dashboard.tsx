@@ -14,7 +14,6 @@ interface Courses {
 const Dashboard = () => {
   const [courses, setCourses] = useState<Courses[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [role, setRole] = useState("user");
 
   const router = useRouter();
 
@@ -26,7 +25,6 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
 
     const userRole = localStorage.getItem("role");
-    setRole(userRole || "user");
 
     if (userRole !== "admin") {
       setError(
@@ -52,9 +50,14 @@ const Dashboard = () => {
         } else {
           alert(data.message || "Failed to fetch courses");
         }
-      } catch (error: any) {
-        setError(error.message);
-        console.log(error.message);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setError(error.message);
+          console.log(error.message);
+        } else {
+          console.error("Unexpected error:", error);
+          alert("An unexpected error occurred");
+        }
       }
     };
     getCourses();

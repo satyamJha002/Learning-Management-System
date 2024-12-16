@@ -106,12 +106,12 @@ const App = () => {
               >
                 Admin Dashboard
               </Link>
-              <a
+              <Link
                 href="/course-forms"
                 className="block w-full bg-indigo-500 text-white py-2 text-center rounded hover:bg-indigo-600"
               >
                 Add Course
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -125,12 +125,12 @@ const App = () => {
               >
                 Contact Support
               </Link>
-              <a
+              <Link
                 href="/about"
                 className="block w-full bg-gray-500 text-white py-2 text-center rounded hover:bg-gray-600"
               >
                 About Us
-              </a>
+              </Link>
             </div>
           </div>
         </section>
