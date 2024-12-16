@@ -19,7 +19,7 @@ const MyEnrolledCourses = () => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/user/enrolled-courses",
+        "https://learning-management-system-j8og.onrender.com/api/user/enrolled-courses",
         {
           method: "GET",
           headers: {
