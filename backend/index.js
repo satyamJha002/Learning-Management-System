@@ -18,7 +18,7 @@ app.get("/", (req, res) =>
 );
 
 const allowedOrigins = [
-  "https://learning-management-system-delta-seven.vercel.app/",
+  "https://learning-management-system-delta-seven.vercel.app",
 ];
 
 app.use(
