@@ -17,7 +17,9 @@ app.get("/", (req, res) =>
   res.send("Congratulation 🎉🎉! Our Express server is Running on Vercel")
 );
 
-const allowedOrigins = ["http://localhost:3000"];
+const allowedOrigins = [
+  "https://learning-management-system-delta-seven.vercel.app/",
+];
 
 app.use(
   cors({
