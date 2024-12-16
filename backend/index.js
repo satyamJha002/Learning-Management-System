@@ -17,9 +17,18 @@ app.get("/", (req, res) =>
   res.send("Congratulation 🎉🎉! Our Express server is Running on Vercel")
 );
 
+const allowedOrigins = ["https://learning-management-system-o6dm.vercel.app"];
+
 app.use(
   cors({
-    origin: "https://learning-management-system-o6dm.vercel.app/",
+    origin: function (origin, callback) {
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
