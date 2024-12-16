@@ -32,7 +32,7 @@ const EditCourse = () => {
       try {
         if (!id) return;
         const response = await fetch(
-          `http://localhost:5000/api/admin/courses/${id}`,
+          `https://learning-management-system-lac.vercel.app/api/admin/courses/${id}`,
           {
             method: "GET",
             headers: {
@@ -70,7 +70,7 @@ const EditCourse = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/admin/courses/${id}`,
+        `https://learning-management-system-lac.vercel.app/api/admin/courses/${id}`,
         {
           method: "PUT",
           headers: {

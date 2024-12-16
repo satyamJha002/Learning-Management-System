@@ -23,7 +23,7 @@ const CourseDetails = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/user/courses/${id}`,
+        `https://learning-management-system-lac.vercel.app/api/user/courses/${id}`,
         {
           method: "GET",
           headers: {

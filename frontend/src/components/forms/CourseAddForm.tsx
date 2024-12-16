@@ -30,14 +30,17 @@ const AddCourse = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/admin/courses`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(courseData),
-      });
+      const response = await fetch(
+        `https://learning-management-system-lac.vercel.app/api/admin/courses`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(courseData),
+        }
+      );
 
       const result = await response.json();
 

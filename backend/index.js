@@ -17,7 +17,12 @@ app.get("/", (req, res) =>
   res.send("Congratulation 🎉🎉! Our Express server is Running on Vercel")
 );
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: "https://learning-management-system-o6dm.vercel.app/",
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.use("/api", adminRoute);
